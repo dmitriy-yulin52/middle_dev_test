@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Route,Routes} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {RootStateType} from "./redux/store";
+import {Button} from "@mui/material";
+import {AuthActionsCreators} from "./redux/components/auth/auth-actions";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+    const {isAuth} = useSelector((state:RootStateType) =>state.auth )
+    const dispatch = useDispatch()
+
+
+
+    const clickHandler = ()=> {
+        dispatch(AuthActionsCreators.setAuth(true))
+    }
+
+
+    return (
+        <div className="App">
+            <Routes>
+                { isAuth ? <Route path={'/'} element={<div>home</div>}/> : <Route path={'/login'} element={<div>login<Button color={'primary'} variant={'contained'} onClick={clickHandler}>click</Button></div>}/>}
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
