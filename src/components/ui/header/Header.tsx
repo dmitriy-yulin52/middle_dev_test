@@ -18,16 +18,15 @@ const sx = {
 
 export const Header: FC<HeaderProps> = memo(({userName, isAuth}): ReactElement => {
     return (
-        <Box height={'64px'} bgcolor={'red'}>
             <AppBar position="static">
                 <Toolbar>
                     <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} width={'100%'}>
                         {isAuth
-                            ? <Link to={'/login'}><TypographyStyled variant="h6" sx={sx}>
-                                LoginPage
-                            </TypographyStyled></Link>
-                            : <Link to={'/'}><TypographyStyled variant="h6" sx={sx}>
+                            ? <Link to={'/'}><TypographyStyled variant="h6" sx={sx}>
                                 Contacts
+                            </TypographyStyled></Link>
+                            : <Link to={'/login'}><TypographyStyled variant="h6" sx={sx}>
+                                LoginPage
                             </TypographyStyled></Link>
                         }
                         <ShowButtonLogin isAuth={isAuth} userName={userName} onClickLogoutHandler={() => {
@@ -35,7 +34,6 @@ export const Header: FC<HeaderProps> = memo(({userName, isAuth}): ReactElement =
                     </Box>
                 </Toolbar>
             </AppBar>
-        </Box>
     );
 });
 
