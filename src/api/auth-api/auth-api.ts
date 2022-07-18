@@ -3,12 +3,12 @@ import {IUser} from "../../redux/components/auth/auth-types";
 
 
 const http = axios.create({
-    baseURL: 'http://localhost:3001',
+    baseURL: 'http://localhost:3003',
     withCredentials: true
 });
 
 
-export const AuthApi = {
+export const authApi = {
     getUsers(): Promise<AxiosResponse<IUser[]>> {
         return http.get<IUser[]>('/users');
     }

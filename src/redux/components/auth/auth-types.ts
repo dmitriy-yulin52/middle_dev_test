@@ -31,7 +31,7 @@ export const initialState = {
 }
 
 /** actions */
-export type SetAuthType = {
+export type SetIsAuthType = {
     type: NamesTypeAction.SET_AUTH,
     payload: boolean
 }
@@ -53,7 +53,7 @@ export type SetIsLoadingType = {
 }
 
 export type ActionsType =
-    SetAuthType
+    SetIsAuthType
     | SetIsErrorType
     | SetUserType
     | SetMessageErrorType
