@@ -1,11 +1,14 @@
 import * as React from 'react';
-import {FC, ReactElement, useCallback} from "react";
-import {Box, Button, styled, TextField} from "@mui/material";
-import {useDispatch} from "react-redux";
-import {AuthActionsCreators} from "../redux/components/auth/auth-actions";
+import {FC, ReactElement, useCallback, useEffect} from 'react';
+import {Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 import {Form, useForm} from "../utils/hooks/useForm";
 import {validatorConfig} from "../utils/validator/validatorConfig";
 import InputField from "../components/ui/InputField/InputField";
+import {preventDefault, useAction} from "../utils/hooks/hooks-utils";
+import axios from "axios";
+import {contactsApi} from "../api/contacts-api/contsacts-api";
+import {AuthActionsCreators} from "../redux/components/auth/auth-actions";
+
 
 type LoginProps = {};
 
@@ -15,29 +18,43 @@ const userData = {
     password: ''
 } as const
 
+async function fetch() {
+    // const data = await contactsApi.getContacts(200,10)
+    const data = await axios.get(' https://randomuser.me/api/?results=200')
+}
+
+
 export const Login: FC<LoginProps> = (props): ReactElement => {
 
     const {data, handleInputChange, handleResetForm, errors, validate} = useForm(userData, true, validatorConfig)
-
-    const dispatch = useDispatch()
-
+    const onLoginHandler = useAction(AuthActionsCreators.login)
 
     const handleSubmit = useCallback((e: React.FormEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        console.log('fffdg')
+        preventDefault(e)
         if (validate(data)) {
             handleResetForm(e)
+            onLoginHandler(data.userName,data.password)
         }
-    }, [data, handleResetForm, validate]);
+    }, [data, handleResetForm, validate,onLoginHandler]);
 
-    console.log(data,'data')
+
+    useEffect(() => {
+        fetch()
+    }, [])
+
+
+
 
     return (
-        <Form data={data} errors={errors} onChange={handleInputChange}>
-            <InputField autoFocus name={'userName'} label={'UserName'} required/>
-            <InputField type={'password'} name={'password'} label={'UserName'}/>
-            <Button type={'submit'} color={'primary'} variant={'contained'} onClick={handleSubmit}
-                    disabled={Object.keys(errors).length !== 0}>SignIn</Button>
-        </Form>
+        <>
+            <Form data={data} errors={errors} onChange={handleInputChange}>
+                <InputField autoFocus name={'userName'} label={'UserName'} required/>
+                <InputField type={'password'} name={'password'} label={'UserName'}/>
+                <Button type={'submit'} color={'primary'} variant={'contained'} onClick={handleSubmit}
+                        disabled={Object.keys(errors).length !== 0}>SignIn</Button>
+            </Form>
+
+        </>
+
     )
 };
