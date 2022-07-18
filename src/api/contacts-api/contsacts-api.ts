@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from "axios";
-import {ContactsType} from "../../redux/components/Contacts/contacts-types";
+import {ContactsType} from "../../redux/components/contacts/contacts-types";
 
 const http = axios.create({
     baseURL: 'https://randomuser.me/api',

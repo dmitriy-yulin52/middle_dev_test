@@ -3,7 +3,7 @@ import {FC, ReactElement, useCallback, useEffect} from 'react';
 import {Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 import {Form, useForm} from "../utils/hooks/useForm";
 import {validatorConfig} from "../utils/validator/validatorConfig";
-import InputField from "../components/ui/InputField/InputField";
+import InputField from "../components/common/InputField/InputField";
 import {preventDefault, useAction} from "../utils/hooks/hooks-utils";
 import axios from "axios";
 import {contactsApi} from "../api/contacts-api/contsacts-api";

@@ -1,5 +1,5 @@
 import React, {ChangeEvent, ReactElement} from 'react';
-import {TextField, TextFieldProps as MuiTextFieldProps} from '@mui/material';
+import {SelectChangeEvent, TextField, TextFieldProps as MuiTextFieldProps} from '@mui/material';
 
 type InputTypes = {
     type?: string;

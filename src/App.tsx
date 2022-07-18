@@ -7,7 +7,7 @@ import {RequireAuth} from "./components/RequireAuth";
 import {Home} from "./components/ui/home/Home";
 import {Layout} from "./components/ui/Layout";
 import {useAction, usePartial} from "./utils/hooks/hooks-utils";
-import {SnackBar} from "./components/SnackBar/SnackBar";
+import {SnackBar} from "./components/common/SnackBar/SnackBar";
 
 function App() {
 

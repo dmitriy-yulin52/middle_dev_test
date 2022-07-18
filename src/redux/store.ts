@@ -2,10 +2,12 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk from 'redux-thunk';
 import {authReducer} from "./components/auth/auth-reducer";
 import {ContactsViewReducer} from "./components/contacts-view/contacts-view-reducer";
+import {ContactsFilterReducer} from "./components/contacts-filter/contacts-filter-reducer";
 
 const rootReducers = combineReducers({
     auth: authReducer,
-    contactsView:ContactsViewReducer
+    contactsView:ContactsViewReducer,
+    contactsFilter:ContactsFilterReducer
 })
 
 

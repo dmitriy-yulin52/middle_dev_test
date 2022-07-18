@@ -2,7 +2,7 @@ import * as React from 'react';
 import {FC, memo, ReactElement} from 'react';
 import {AppBar, Box, Button, styled, Toolbar, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
-import {RadioButtonGroup} from "../radio-button-group/RadioButtonGroup";
+import {RadioButtonGroup} from "../../common/radio-button-group/RadioButtonGroup";
 
 type HeaderProps = {
     userName: string,
