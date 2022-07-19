@@ -42,6 +42,6 @@ export const getFormatedData = (data: ContactsType): GetFormateDataReturn => ({
   birthday: convertBirthday(data.dob),
   email: data.email,
   phone: data.phone,
-  national: NATIONAL_ABB[data.nat],
+  national: NATIONAL_ABB[data.nat] ?? 'German',
   nationalColor: NATIONAL_COLOR[data.nat] ?? {color:'#cc415f',inverted:false},
 });

@@ -5,14 +5,15 @@ import {useTypedSelector} from "../../../utils/hooks/useTypedSelector";
 import {ContactsFilters} from "../contacts-filters/ContactsFilters";
 import {ContactsActions} from "../../../redux/components/contacts/contacts-actions";
 import {ContactsView} from "../contacts-view/ContactsView";
+import {Statistic} from "../statistic/Statistic";
+import {Box} from "@mui/material";
 
-type Props = {};
 
 
 export const Home:FC = ():ReactElement => {
 
     const {view} = useTypedSelector(state => state.contactsView);
-    const {isLoading,items} = useTypedSelector(state => state.contacts);
+    const {isLoading} = useTypedSelector(state => state.contacts);
     const fetchContactsHandler = useAction(ContactsActions.fetchContacts)
 
     useEffect(()=>{
@@ -21,9 +22,10 @@ export const Home:FC = ():ReactElement => {
 
 
     return (
-        <>
+        <Box margin={'16px'}>
             <ContactsFilters/>
-            <ContactsView view={view} isLoading={isLoading} contacts={items}/>
-        </>
+            <ContactsView view={view} isLoading={isLoading}/>
+            <Statistic/>
+        </Box>
     );
 };

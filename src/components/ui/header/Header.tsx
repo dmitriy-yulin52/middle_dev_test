@@ -16,7 +16,7 @@ const sx = {
 
 export const Header: FC<HeaderProps> = memo(({userName, isAuth}): ReactElement => {
     return (
-        <AppBar position="static">
+        <AppBar position="sticky">
             <Toolbar>
                 <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} width={'100%'}>
                     {isAuth
