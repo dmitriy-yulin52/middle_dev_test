@@ -3,7 +3,7 @@ import {
     ContactsSortType,
     ContactsType,
     NamesType,
-    SetContacts,
+    SetContacts, SetCurrentPage,
     SetIsError,
     SetIsLoading,
     SetMessageError, SetSortType
@@ -24,7 +24,8 @@ export const ContactsActions = {
         type: NamesType.SET_MESSAGE_ERROR,
         payload: messageError
     }),
-    setSortType: (sortType: ContactsSortType): SetSortType => ({type: NamesType.SET_SORT_TYPE, payload: sortType})
+    setSortType: (sortType: ContactsSortType): SetSortType => ({type: NamesType.SET_SORT_TYPE, payload: sortType}),
+    setCurrentPage:(page:number):SetCurrentPage=>({type:NamesType.SET_CURRENT_PAGE,payload:page})
 }
 
 function fetchContactsThunk() {

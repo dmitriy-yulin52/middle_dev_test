@@ -9,6 +9,8 @@ const contacts = (state: RootStateType): InitialStateType => state.contacts
 const contactsFilter = (state: RootStateType): ContactsFilterType => state.contactsFilter
 const contactsItems = (state: RootStateType): ContactsType[] => contacts(state).items
 const sortType = (state: RootStateType): ContactsSortType => contacts(state).sortType
+const currentPage = (state: RootStateType): number => contacts(state).currentPage
+const totalPage = (state: RootStateType): number => contacts(state).totalPage
 
 
 export const getFiltredContacts = createSelector(
@@ -40,6 +42,13 @@ export const getSortedContacts = createSelector(
         }
     }
 )
+
+export const getContactParts = createSelector(
+  [getSortedContacts, totalPage, currentPage],
+  (contacts, pageCapacity, page) => {
+    return contacts.slice((page - 1) * pageCapacity, page * pageCapacity);
+  },
+);
 
 
 type NationalAccType = {

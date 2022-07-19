@@ -4,7 +4,7 @@ import {ContactsViewType} from "../../../redux/components/contacts-view/contacts
 import {ContactsTable} from "./contacts-table/ContactsTable";
 import {ContactsTile} from "./contacts-tile/contacts-tile";
 import {useSelector} from "react-redux";
-import {getSortedContacts} from "../../../redux/components/contacts/contacts-selectors";
+import {getContactParts} from "../../../redux/components/contacts/contacts-selectors";
 
 type ContactsViewProps = {
     view: ContactsViewType
@@ -12,7 +12,7 @@ type ContactsViewProps = {
 };
 export const ContactsView: FC<ContactsViewProps> = memo((props): ReactElement => {
     const {view, isLoading} = props
-    const contacts = useSelector(getSortedContacts)
+    const contacts = useSelector(getContactParts)
 
     return (
         <>
