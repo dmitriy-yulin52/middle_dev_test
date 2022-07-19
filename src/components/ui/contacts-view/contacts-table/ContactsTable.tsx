@@ -1,19 +1,22 @@
 import * as React from 'react';
 import {FC, memo, ReactElement} from 'react';
 import {ContactsType} from "../../../../redux/components/contacts/contacts-types";
-import {Box} from "@mui/material";
+import {Box, CircularProgress} from "@mui/material";
 import {TableImpl} from "./Table";
 
 type ContactsTableProps = {
     isLoading: boolean
-    contacts:ContactsType[]
+    contacts: ContactsType[]
 };
-export const ContactsTable: FC<ContactsTableProps> = memo(({isLoading,contacts}): ReactElement => {
+export const ContactsTable: FC<ContactsTableProps> = memo(({isLoading, contacts}): ReactElement => {
 
     return (
         <>
             {isLoading
-                ? <Box width={'400px'} height={'200px'} fontSize={'100px'}>Loading.....</Box>
+                ? <Box  height={'calc(100vh - 64px)'} fontSize={'100px'} display={'flex'}
+                       justifyContent={'center'} alignItems={'center'}>
+                    <CircularProgress/>
+                </Box>
                 : <TableImpl contacts={contacts}/>
             }
         </>

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {FC, memo, ReactElement} from 'react';
 import {ContactsType} from "../../../../redux/components/contacts/contacts-types";
 import {Tile} from "./Tile";
-import {Box} from "@mui/material";
+import {Box, CircularProgress} from "@mui/material";
 import {useTypedSelector} from "../../../../utils/hooks/useTypedSelector";
 
 
@@ -18,7 +18,9 @@ export const ContactsTile: FC<ContactsTileProps> = memo(({contacts, isLoading}):
     return (
         <>
             {isLoading
-                ? <Box width={'400px'} height={'200px'} fontSize={'100px'}>Loading.....</Box>
+                ? <Box  height={'calc(100vh - 64px)'}  display={'flex'} justifyContent={'center'} alignItems={'center'}>
+                    <CircularProgress />
+                </Box>
                 : <Tile contacts={contacts} sortType={sortType}/>
             }
         </>

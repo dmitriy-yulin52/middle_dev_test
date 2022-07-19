@@ -60,9 +60,9 @@ export const getStatistic = createSelector(
     (contacts) => {
         return contacts.reduce((acc, contact) => {
                 acc.collectionsize += 1
-                if (contact.gender === 'males') {
+                if (contact.gender === 'male') {
                     acc.males += 1
-                } else if (contact.gender === 'females') {
+                } else if (contact.gender === 'female') {
                     acc.females += 1
                 } else {
                     acc.indeterminate += 1
