@@ -5,6 +5,7 @@ export enum NamesType {
     SET_CONTACTS = 'contacts/SET_CONTACTS',
     SET_MESSAGE_ERROR = 'contacts/SET_MESSAGE_ERROR',
     SET_SORT_TYPE = 'contacts/SET_SORT_TYPE',
+    SET_CURRENT_PAGE = 'contacts/SET_CURRENT_PAGE',
 }
 
 
@@ -80,9 +81,9 @@ type RegisteredType = {
 }
 
 export enum ContactsSortType {
-  BY_NAME_ASC = "BY_NAME_ASC",
-  BY_NAME_DESC = "BY_NAME_DESC",
-  NOT_SORTED = "NOT_SORTED",
+    BY_NAME_ASC = "BY_NAME_ASC",
+    BY_NAME_DESC = "BY_NAME_DESC",
+    NOT_SORTED = "NOT_SORTED",
 }
 
 
@@ -92,7 +93,9 @@ export const initialState = {
     isLoading: false,
     isError: false,
     messageError: null,
-    sortType:ContactsSortType.NOT_SORTED
+    sortType: ContactsSortType.NOT_SORTED,
+    totalPage: 9,
+    currentPage: 1,
 }
 
 export type InitialStateType = {
@@ -100,7 +103,9 @@ export type InitialStateType = {
     isLoading: boolean,
     isError: boolean,
     messageError: null | string
-    sortType:ContactsSortType
+    sortType: ContactsSortType
+    currentPage: number,
+    totalPage: number
 }
 
 
@@ -128,6 +133,10 @@ export type SetSortType = {
     type: NamesType.SET_SORT_TYPE,
     payload: ContactsSortType
 }
+export type SetCurrentPage = {
+    type: NamesType.SET_CURRENT_PAGE,
+    payload: number
+}
 
 export type ActionsType =
     | SetIsLoading
@@ -136,6 +145,7 @@ export type ActionsType =
     | FetchContacts
     | SetMessageError
     | SetSortType
+    | SetCurrentPage
 
 
 

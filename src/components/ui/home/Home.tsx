@@ -5,8 +5,9 @@ import {useTypedSelector} from "../../../utils/hooks/useTypedSelector";
 import {ContactsFilters} from "../contacts-filters/ContactsFilters";
 import {ContactsActions} from "../../../redux/components/contacts/contacts-actions";
 import {ContactsView} from "../contacts-view/ContactsView";
-import {Statistic} from "../statistic/Statistic";
 import {Box} from "@mui/material";
+import {Statistic} from "../statistic/Statistic";
+import {Pagination} from "../pagination/Pagination";
 
 
 
@@ -26,6 +27,7 @@ export const Home:FC = ():ReactElement => {
             <ContactsFilters/>
             <ContactsView view={view} isLoading={isLoading}/>
             <Statistic/>
+            <Pagination/>
         </Box>
     );
 };
