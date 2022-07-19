@@ -3,7 +3,8 @@ export enum NamesType {
     SET_IS_ERROR = 'contacts/SET_IS_ERROR',
     FETCH_CONTACTS = 'contacts/FETCH_CONTACTS',
     SET_CONTACTS = 'contacts/SET_CONTACTS',
-    SET_MESSAGE_ERROR = 'contacts/SET_MESSAGE_ERROR'
+    SET_MESSAGE_ERROR = 'contacts/SET_MESSAGE_ERROR',
+    SET_SORT_TYPE = 'contacts/SET_SORT_TYPE',
 }
 
 
@@ -78,13 +79,20 @@ type RegisteredType = {
     age: number
 }
 
+export enum ContactsSortType {
+  BY_NAME_ASC = "BY_NAME_ASC",
+  BY_NAME_DESC = "BY_NAME_DESC",
+  NOT_SORTED = "NOT_SORTED",
+}
+
 
 /** state*/
 export const initialState = {
     items: [],
     isLoading: false,
     isError: false,
-    messageError: null
+    messageError: null,
+    sortType:ContactsSortType.NOT_SORTED
 }
 
 export type InitialStateType = {
@@ -92,6 +100,7 @@ export type InitialStateType = {
     isLoading: boolean,
     isError: boolean,
     messageError: null | string
+    sortType:ContactsSortType
 }
 
 
@@ -115,6 +124,10 @@ export type SetMessageError = {
     type: NamesType.SET_MESSAGE_ERROR,
     payload: string | null
 }
+export type SetSortType = {
+    type: NamesType.SET_SORT_TYPE,
+    payload: ContactsSortType
+}
 
 export type ActionsType =
     | SetIsLoading
@@ -122,6 +135,8 @@ export type ActionsType =
     | SetContacts
     | FetchContacts
     | SetMessageError
+    | SetSortType
+
 
 
 

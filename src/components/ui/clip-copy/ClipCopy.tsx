@@ -1,15 +1,11 @@
 import copy from "copy-to-clipboard";
 import React, {memo, ReactElement, useCallback, useState} from "react";
 import {
-    ClipButton,
-    ClipCopyContentLink,
-    ClipCopyContentText,
-    ClipImage,
-    ClipWrapper,
+    ButtonCopy,
+    ClipWrapper, ContentLink,
     SuccessMessage,
 } from "./ClipCopyStyles";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import {IconButton} from "@mui/material";
 
 export interface ClipCopyProp {
     href?: string;
@@ -26,21 +22,21 @@ export const ClipCopy: React.FC<ClipCopyProp> = memo(({children, href, alignCent
             setSuccessCopy(status);
             setTimeout(() => {
                 setSuccessCopy(false);
-            }, 9);
+            }, 1000);
         }
-    }, [setSuccessCopy]);
+    }, [setSuccessCopy, copy]);
 
     return (
         <ClipWrapper alignCenter={alignCenter}>
-            <IconButton style={{color: '#2aa2ff',position:'relative'}} onClick={copyToClip}>
+            <ButtonCopy onClick={copyToClip}>
                 <ContentCopyIcon/>
                 {successCopy && <SuccessMessage>Скопировано!</SuccessMessage>}
-            </IconButton>
-
+            </ButtonCopy>
             {href ? (
-                <ClipCopyContentLink href={href}>{children}</ClipCopyContentLink>
+                <ContentLink href={href}>{children}</ContentLink>
             ) : (
-                <ClipCopyContentText>{children}</ClipCopyContentText>
+                <ContentLink
+                >{children}</ContentLink>
             )}
         </ClipWrapper>
     );

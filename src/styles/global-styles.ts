@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-size: 73.5%;
+    font-size: 78.5%;
   }
 
   body {
