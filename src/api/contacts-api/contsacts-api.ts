@@ -3,11 +3,11 @@ import {ContactsType} from "../../redux/components/contacts/contacts-types";
 
 const http = axios.create({
     baseURL: 'https://randomuser.me/api',
-    withCredentials: false
+    withCredentials: true
 });
 
 
-type ResponseType = {
+export type ResponseType = {
     info: {
         seed: string,
         results: number,
@@ -18,7 +18,7 @@ type ResponseType = {
 }
 
 export const contactsApi = {
-    getContacts(amount: number, page: number): Promise<AxiosResponse<ResponseType>> {
-        return http.get(`/?result=${amount}&page${page}`)
+    getContacts(): Promise<AxiosResponse<ResponseType>> {
+        return http.get(`/?result=50`)
     }
 }

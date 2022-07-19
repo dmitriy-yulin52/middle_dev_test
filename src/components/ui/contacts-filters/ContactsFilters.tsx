@@ -1,16 +1,14 @@
 import * as React from 'react';
+import {ChangeEvent, ReactElement, useCallback, useEffect, useState} from 'react';
 import {
     Box,
-    Button,
     FormControl,
     IconButton,
     InputAdornment,
     InputLabel,
-    MenuItem,
     OutlinedInput,
-    Select, SelectChangeEvent
+    SelectChangeEvent
 } from "@mui/material";
-import {ChangeEvent, ReactElement, useCallback, useEffect, useState} from "react";
 import ClearIcon from '@mui/icons-material/Clear';
 import SearchIcon from '@mui/icons-material/Search';
 import {SelectGroup} from "../../common/select-group/SelectGroup";
@@ -29,17 +27,16 @@ const contactFilter = {
 }
 
 
-export type TitlesType = {
+export type ItemsType = {
     title: string,
     value: string
 }
 
-const titles: TitlesType[] = [
+const items: ItemsType[] = [
     {title: 'gender', value: ''},
     {title: 'male', value: 'male'},
     {title: 'female', value: 'female'},
 ]
-
 
 const sx = {
     m: 1
@@ -59,6 +56,15 @@ export const ContactsFilters = (props: Props):ReactElement => {
             [name]: value
         }));
     }, [setFilterState])
+
+    const resetFilterStateHandler = useCallback(()=>{
+        setFilterState((prevState)=>({
+            ...prevState,
+            name:'',
+            gender:'',
+            nationality:''
+        }))
+    },[setFilterState])
 
     useEffect(()=>{
         setFilterValueHandler()
@@ -81,7 +87,7 @@ export const ContactsFilters = (props: Props):ReactElement => {
                         />
                     </FormControl>
                     <Box marginRight={'8px'}>
-                        <SelectGroup value={filterState.gender} onChange={onChangeHandler} titles={titles}
+                        <SelectGroup value={filterState.gender} onChange={onChangeHandler} items={items}
                                      name={'gender'}/>
                     </Box>
                     <Box >
@@ -91,7 +97,7 @@ export const ContactsFilters = (props: Props):ReactElement => {
                 </Box>
             </Box>
             <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
-                <IconButton color={'primary'}>
+                <IconButton color={'primary'} onClick={resetFilterStateHandler}>
                     <ClearIcon/>
                 </IconButton>
             </Box>
