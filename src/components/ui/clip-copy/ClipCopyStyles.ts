@@ -19,7 +19,7 @@ export const ClipWrapper = styled.div<ClipWrapperProps>`
   white-space: pre-wrap;
   word-wrap: break-word;
   text-overflow: ellipsis;
-  align-items: ${({ alignCenter }) => (alignCenter ? "center" : "flex-start")};
+  align-items:center;
 `;
 
 export const SuccessMessage = styled.p`

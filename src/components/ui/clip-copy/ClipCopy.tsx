@@ -9,11 +9,10 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 export interface ClipCopyProp {
     href?: string;
-    alignCenter?: boolean;
     children: string
 }
 
-export const ClipCopy: React.FC<ClipCopyProp> = memo(({children, href, alignCenter}): ReactElement => {
+export const ClipCopy: React.FC<ClipCopyProp> = memo(({children, href}): ReactElement => {
     const [successCopy, setSuccessCopy] = useState(false);
 
     const copyToClip = useCallback(() => {
@@ -27,7 +26,7 @@ export const ClipCopy: React.FC<ClipCopyProp> = memo(({children, href, alignCent
     }, [setSuccessCopy, copy]);
 
     return (
-        <ClipWrapper alignCenter={alignCenter}>
+        <ClipWrapper>
             <ButtonCopy onClick={copyToClip}>
                 <ContentCopyIcon/>
                 {successCopy && <SuccessMessage>Скопировано!</SuccessMessage>}

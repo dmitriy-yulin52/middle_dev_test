@@ -15,7 +15,6 @@ export const Layout:FC<LayoutProps> = memo(({userName,isAuth}):ReactElement => {
     return (
         <Box>
             <Header userName={userName} isAuth={isAuth}/>
-
             <Outlet/>
         </Box>
     );
