@@ -1,4 +1,4 @@
-import {ContactsType} from "../../../../redux/components/contacts/contacts-types";
+import {ContactsSortType, ContactsType} from "../../../../redux/components/contacts/contacts-types";
 import {memo, ReactElement} from "react";
 import {Box} from "@mui/material";
 import {getFormatedData} from "../../../../assets/data-converter";
@@ -14,14 +14,15 @@ import {
     UserNation
 } from "./ContactsTableStyles";
 import {ClipCopy} from "../../clip-copy/ClipCopy";
+import {SortNameButton} from "../../sort-name-button/SortNameButton";
 
 type TableType = {
     contacts: ContactsType[]
+    sortType: ContactsSortType
 }
 
 function TableImpl(props: TableType): ReactElement {
-
-    const {contacts} = props
+    const {contacts,sortType} = props
     return (
         <Wrapper>
             <TableContainer>
@@ -31,7 +32,7 @@ function TableImpl(props: TableType): ReactElement {
                             Avatar
                         </TableCell>
                         <TableCell>
-                            <Box>Full name</Box>
+                            <SortNameButton sortType={sortType}>Full name</SortNameButton>
                         </TableCell>
                         <TableCell>Birthday</TableCell>
                         <TableCell>Email</TableCell>
@@ -72,7 +73,7 @@ function TableImpl(props: TableType): ReactElement {
                             </TableCell>
                             <TableCell addaptiveHide align="right">
                                 <UserNation color={nationalColor.color} inverted={nationalColor.inverted}>
-                                    {national}
+                                    {national ? national : 'German'}
                                 </UserNation>
                             </TableCell>
                         </TableBodyRow>

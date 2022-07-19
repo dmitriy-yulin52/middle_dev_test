@@ -72,7 +72,7 @@ export const ContactsFilters = (props: Props):ReactElement => {
 
 
     return (
-        <Box display={'flex'} justifyContent={'space-between'}>
+        <Box display={'flex'} justifyContent={'space-between'} marginTop={'24px'}>
             <Box width={'60%'}>
                 <Box display={'flex'} alignItems={'center'}>
                     <FormControl fullWidth sx={sx} variant={'outlined'}>

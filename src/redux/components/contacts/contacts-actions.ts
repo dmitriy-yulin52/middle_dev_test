@@ -1,5 +1,13 @@
 import {DispatchType} from "../../store";
-import {ContactsType, NamesType, SetContacts, SetIsError, SetIsLoading, SetMessageError} from "./contacts-types";
+import {
+    ContactsSortType,
+    ContactsType,
+    NamesType,
+    SetContacts,
+    SetIsError,
+    SetIsLoading,
+    SetMessageError, SetSortType
+} from "./contacts-types";
 import axios, {AxiosResponse} from "axios";
 import {ResponseType} from "../../../api/contacts-api/contsacts-api";
 
@@ -8,14 +16,15 @@ function fetchContacts(): Promise<AxiosResponse<ResponseType>> {
 }
 
 export const ContactsActions = {
-    fetchContacts:fetchContactsThunk,
+    fetchContacts: fetchContactsThunk,
     setIsLoading: (isLoading: boolean): SetIsLoading => ({type: NamesType.SET_IS_LOADING, payload: isLoading}),
     setContacts: (contacts: ContactsType[]): SetContacts => ({type: NamesType.SET_CONTACTS, payload: contacts}),
     setIsError: (isError: boolean): SetIsError => ({type: NamesType.SET_IS_ERROR, payload: isError}),
     setMessageError: (messageError: string | null): SetMessageError => ({
         type: NamesType.SET_MESSAGE_ERROR,
         payload: messageError
-    })
+    }),
+    setSortType: (sortType: ContactsSortType): SetSortType => ({type: NamesType.SET_SORT_TYPE, payload: sortType})
 }
 
 function fetchContactsThunk() {

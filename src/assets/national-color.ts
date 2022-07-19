@@ -23,7 +23,7 @@ export interface NationalAbb {
 }
 
 export const NATIONAL_ABB:NationalAbb = {
-    "AU": "Australian",
+    AU: "Australian",
     BR: "Brazilian",
     CA: "Canadian",
     CH: "Swiss",
@@ -40,6 +40,7 @@ export const NATIONAL_ABB:NationalAbb = {
     NZ: "Cantabrian",
     TR: "Turkish",
     US: "American",
+    IN: "India",
 };
 
 export const NATIONAL_COLOR: NationalColor = {

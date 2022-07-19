@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {FC, ReactElement, useEffect} from 'react';
+import {useAction} from "../../../utils/hooks/hooks-utils";
 import {useTypedSelector} from "../../../utils/hooks/useTypedSelector";
 import {ContactsFilters} from "../contacts-filters/ContactsFilters";
-import {ContactsView} from "../contacts-view/ContactsView";
-import {useAction} from "../../../utils/hooks/hooks-utils";
 import {ContactsActions} from "../../../redux/components/contacts/contacts-actions";
+import {ContactsView} from "../contacts-view/ContactsView";
 
 type Props = {};
 

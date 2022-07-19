@@ -31,6 +31,11 @@ export const ContactsReducer = (state:InitialStateType = initialState,action:Act
                 ...state,
                 messageError:action.payload
             }
+        case NamesType.SET_SORT_TYPE:
+            return {
+                ...state,
+                sortType:action.payload
+            }
         default:
             return state;
     }
