@@ -1,5 +1,13 @@
+export enum NamesType {
+    SET_IS_LOADING = 'contacts/SET_IS_LOADING',
+    SET_IS_ERROR = 'contacts/SET_IS_ERROR',
+    FETCH_CONTACTS = 'contacts/FETCH_CONTACTS',
+    SET_CONTACTS = 'contacts/SET_CONTACTS',
+    SET_MESSAGE_ERROR = 'contacts/SET_MESSAGE_ERROR'
+}
 
 
+/** contacts*/
 export type ContactsType = {
     cell: string
     dob: DobType
@@ -15,7 +23,7 @@ export type ContactsType = {
     registered: RegisteredType
 }
 
-type DobType = {
+export type DobType = {
     date: string, age: number
 }
 type IdType = {
@@ -34,7 +42,7 @@ type TimezoneType = {
     offset: string,
     description: string
 }
-type LocationType = {
+export type LocationType = {
     city: string
     coordinates: CoordinatesType
     country: string
@@ -69,4 +77,55 @@ type RegisteredType = {
     date: string,
     age: number
 }
+
+
+/** state*/
+export const initialState = {
+    items: [],
+    isLoading: false,
+    isError: false,
+    messageError: null
+}
+
+export type InitialStateType = {
+    items: ContactsType[],
+    isLoading: boolean,
+    isError: boolean,
+    messageError: null | string
+}
+
+
+/** actions*/
+export type SetIsLoading = {
+    type: NamesType.SET_IS_LOADING,
+    payload: boolean
+}
+export type SetIsError = {
+    type: NamesType.SET_IS_ERROR,
+    payload: boolean
+}
+export type SetContacts = {
+    type: NamesType.SET_CONTACTS,
+    payload: ContactsType[]
+}
+export type FetchContacts = {
+    type: NamesType.FETCH_CONTACTS,
+}
+export type SetMessageError = {
+    type: NamesType.SET_MESSAGE_ERROR,
+    payload: string | null
+}
+
+export type ActionsType =
+    | SetIsLoading
+    | SetIsError
+    | SetContacts
+    | FetchContacts
+    | SetMessageError
+
+
+
+
+
+
 

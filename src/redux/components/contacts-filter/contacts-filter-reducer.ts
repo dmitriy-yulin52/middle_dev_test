@@ -13,6 +13,7 @@ export const ContactsFilterReducer = (state: ContactsFilterType = initialState, 
             }
         case TypeNames.RESET_FILTER_VALUE:
             return {
+                ...state,
                 name: '',
                 gender: '',
                 nationality: ''
