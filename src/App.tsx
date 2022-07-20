@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import {RootStateType} from "./redux/store";
 import {AuthActionsCreators} from "./redux/components/auth/auth-actions";
 import {RequireAuth} from "./components/RequireAuth";
-import {Home} from "./components/ui/home/Home";
+import {Home} from "./pages/Home";
 import {Layout} from "./components/ui/Layout";
 import {useAction, usePartial} from "./utils/hooks/hooks-utils";
 import {SnackBar} from "./components/common/SnackBar/SnackBar";

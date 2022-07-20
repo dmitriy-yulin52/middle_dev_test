@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {FC, ReactElement, useEffect} from 'react';
-import {useAction} from "../../../utils/hooks/hooks-utils";
-import {useTypedSelector} from "../../../utils/hooks/useTypedSelector";
-import {ContactsFilters} from "../contacts-filters/ContactsFilters";
-import {ContactsActions} from "../../../redux/components/contacts/contacts-actions";
-import {ContactsView} from "../contacts-view/ContactsView";
+import {useAction} from "../utils/hooks/hooks-utils";
+import {useTypedSelector} from "../utils/hooks/useTypedSelector";
+import {ContactsFilters} from "../components/ui/contacts-filters/ContactsFilters";
+import {ContactsActions} from "../redux/components/contacts/contacts-actions";
+import {ContactsView} from "../components/ui/contacts-view/ContactsView";
 import {Box} from "@mui/material";
-import {Statistic} from "../statistic/Statistic";
-import {Pagination} from "../pagination/Pagination";
+import {Statistic} from "../components/ui/statistic/Statistic";
+import {Pagination} from "../components/ui/pagination/Pagination";
 
 
 
